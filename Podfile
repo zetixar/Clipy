@@ -1,4 +1,4 @@
-platform :osx, '10.10'
+platform :osx, '15.0'
 use_frameworks!
 
 target 'Clipy' do
@@ -24,10 +24,18 @@ target 'Clipy' do
 
   target 'ClipyTests' do
     inherit! :search_paths
-
-    pod 'Quick'
-    pod 'Nimble'
-
+    
+    pod 'Quick', '~> 3.0'
+    pod 'Nimble', '~> 10.0'
   end
 
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '15.0'
+      config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = '$(inherited)'
+    end
+  end
 end

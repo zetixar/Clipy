@@ -68,6 +68,9 @@ struct Constants {
         static let excludeApplications = "kCPYExcludeApplications"
         static let collectCrashReport = "kCPYCollectCrashReport"
         static let showColorPreviewInTheMenu = "kCPYPrefShowColorPreviewInTheMenu"
+        static let searchMaxResults = "kCPYPrefSearchMaxResults"
+        static let searchIncludeSnippets = "kCPYPrefSearchIncludeSnippets"
+        static let searchFuzzyMatching = "kCPYPrefSearchFuzzyMatching"
     }
 
     struct Beta {
@@ -104,6 +107,7 @@ struct Constants {
         static let mainKeyCombo = "kCPYHotKeyMainKeyCombo"
         static let historyKeyCombo = "kCPYHotKeyHistoryKeyCombo"
         static let snippetKeyCombo = "kCPYHotKeySnippetKeyCombo"
+        static let searchKeyCombo = "kCPYHotKeySearchKeyCombo"
         static let migrateNewKeyCombo = "kCPYMigrateNewKeyCombo"
         static let folderKeyCombos = "kCPYFolderKeyCombos"
         static let clearHistoryKeyCombo = "kCPYClearHistoryKeyCombo"

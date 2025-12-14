@@ -62,6 +62,12 @@ class AppDelegate: NSObject, NSMenuItemValidation {
         CPYSnippetsEditorWindowController.sharedController.showWindow(self)
     }
 
+    @objc func showSearchWindow() {
+        // TODO: Re-enable search functionality
+        // CPYSearchWindowController.sharedController.showSearchWindow()
+        NSLog("Search window temporarily disabled")
+    }
+
     @objc func terminate() {
         terminateApplication()
     }

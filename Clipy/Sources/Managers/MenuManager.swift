@@ -69,6 +69,9 @@ extension MenuManager {
             menu = historyMenu
         case .snippet:
             menu = snippetMenu
+        case .search:
+            // TODO: Re-enable search functionality
+            menu = nil
         }
         menu?.popUp(positioning: nil, at: NSEvent.mouseLocation, in: nil)
     }
@@ -191,6 +194,7 @@ private extension MenuManager {
             clipMenu?.addItem(NSMenuItem(title: L10n.clearHistory, action: #selector(AppDelegate.clearAllHistory)))
         }
 
+        clipMenu?.addItem(NSMenuItem(title: L10n.search, action: #selector(AppDelegate.showSearchWindow)))
         clipMenu?.addItem(NSMenuItem(title: L10n.editSnippets, action: #selector(AppDelegate.showSnippetEditorWindow)))
         clipMenu?.addItem(NSMenuItem(title: L10n.preferences, action: #selector(AppDelegate.showPreferenceWindow)))
         clipMenu?.addItem(NSMenuItem.separator())

@@ -22,14 +22,17 @@ final class HotKeyService: NSObject {
         // MainMenu:    ⌘ + Shift + V
         // HistoryMenu: ⌘ + Control + V
         // SnipeetMenu: ⌘ + Shift B
+        // SearchMenu:  ⌘ + Shift + F
         return [Constants.Menu.clip: ["keyCode": 9, "modifiers": 768],
                 Constants.Menu.history: ["keyCode": 9, "modifiers": 4352],
-                Constants.Menu.snippet: ["keyCode": 11, "modifiers": 768]]
+                Constants.Menu.snippet: ["keyCode": 11, "modifiers": 768],
+                "SearchMenu": ["keyCode": 3, "modifiers": 768]] // F key with Cmd+Shift
     }()
 
     fileprivate(set) var mainKeyCombo: KeyCombo?
     fileprivate(set) var historyKeyCombo: KeyCombo?
     fileprivate(set) var snippetKeyCombo: KeyCombo?
+    fileprivate(set) var searchKeyCombo: KeyCombo?
     fileprivate(set) var clearHistoryKeyCombo: KeyCombo?
 
 }
@@ -46,6 +49,12 @@ extension HotKeyService {
 
     @objc func popUpSnippetMenu() {
         AppEnvironment.current.menuManager.popUpMenu(.snippet)
+    }
+
+    @objc func showSearchWindow() {
+        // TODO: Re-enable search functionality
+        // CPYSearchWindowController.sharedController.showSearchWindow()
+        NSLog("Search hotkey temporarily disabled")
     }
 
     @objc func popUpClearHistoryAlert() {
@@ -72,6 +81,8 @@ extension HotKeyService {
         change(with: .history, keyCombo: savedKeyCombo(forKey: Constants.HotKey.historyKeyCombo))
         // Snippet menu
         change(with: .snippet, keyCombo: savedKeyCombo(forKey: Constants.HotKey.snippetKeyCombo))
+        // Search window
+        change(with: .search, keyCombo: savedKeyCombo(forKey: Constants.HotKey.searchKeyCombo))
         // Clear History
         changeClearHistoryKeyCombo(savedKeyCombo(forKey: Constants.HotKey.clearHistoryKeyCombo))
     }
@@ -84,6 +95,8 @@ extension HotKeyService {
             historyKeyCombo = keyCombo
         case .snippet:
             snippetKeyCombo = keyCombo
+        case .search:
+            searchKeyCombo = keyCombo
         }
         register(with: type, keyCombo: keyCombo)
     }
